@@ -1,0 +1,10 @@
+<div class="flex h-[66px] w-52 flex-col items-start gap-y-1.5">
+  <button
+    [disabled]="alreadyBought"
+    (click)="buyItem()"
+    [title]="itemDescription"
+    class="h-full w-full rounded-sm bg-slate-200 px-3 py-2 font-semibold hover:bg-slate-300 disabled:bg-gray-200 disabled:text-gray-500"
+  >
+    Comprar {{ itemTitle }} por ${{ itemPrice }}
+  </button>
+</div>

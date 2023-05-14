@@ -1,0 +1,15 @@
+<div class="flex flex-col items-start gap-y-5 p-5">
+  <app-navbar></app-navbar>
+  <div class="flex gap-x-3" *ngFor="let stage of AvailableStages">
+    <app-action-group
+      [actionTitle]="stage.action.title"
+      [reward]="stage.action.reward"
+      [time]="stage.action.time"
+    ></app-action-group>
+    <app-shop-group
+      [itemTitle]="stage.item.title"
+      [itemDescription]="stage.item.description"
+      [itemPrice]="stage.item.price"
+    ></app-shop-group>
+  </div>
+</div>

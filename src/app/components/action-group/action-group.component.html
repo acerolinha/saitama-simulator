@@ -1,0 +1,16 @@
+<div class="flex w-72 flex-col items-start gap-y-1.5">
+  <div class="h-5 w-full rounded-sm bg-gray-300">
+    <div
+      class="h-full bg-green-400 transition-all ease-linear"
+      [style]="'width:' + Progress + 'px'"
+    ></div>
+  </div>
+  <button
+    [disabled]="isPerforming"
+    (click)="performAction()"
+    [title]="'Receba $' + reward + ' em ' + time + 's'"
+    class="w-full rounded-sm bg-slate-200 px-3 py-2 font-semibold hover:bg-slate-300 disabled:bg-gray-200 disabled:text-gray-500"
+  >
+    {{ actionTitle }}
+  </button>
+</div>
