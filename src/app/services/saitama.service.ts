@@ -24,5 +24,9 @@ export class SaitamaService {
     return this.stage;
   }
 
+  public completeChallenge(): void {
+    this.stage++;
+  }
+
   constructor() {}
 }

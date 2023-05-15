@@ -1,15 +1,48 @@
-<div class="flex flex-col items-start gap-y-5 p-5">
+<div
+  class="flex h-screen w-screen flex-col items-start gap-y-5 p-5 md:w-[800px]"
+>
   <app-navbar></app-navbar>
-  <div class="flex gap-x-3" *ngFor="let stage of AvailableStages">
-    <app-action-group
-      [actionTitle]="stage.action.title"
-      [reward]="stage.action.reward"
-      [time]="stage.action.time"
-    ></app-action-group>
-    <app-shop-group
-      [itemTitle]="stage.item.title"
-      [itemDescription]="stage.item.description"
-      [itemPrice]="stage.item.price"
-    ></app-shop-group>
+  <div class="flex w-full gap-x-4">
+    <div class="flex w-full flex-col gap-y-3">
+      <div
+        class="flex justify-between gap-x-3"
+        *ngFor="let stage of AvailableStages"
+      >
+        <app-action-group
+          class="w-1/2"
+          [actionTitle]="stage.action.title"
+          [reward]="stage.action.reward"
+          [time]="stage.action.time"
+        ></app-action-group>
+        <app-shop-group
+          class="w-1/2"
+          [itemTitle]="stage.item.title"
+          [itemDescription]="stage.item.description"
+          [itemPrice]="stage.item.price"
+        ></app-shop-group>
+      </div>
+    </div>
+    <div class="w-1/2">
+      <h2
+        class="text-xl font-extrabold text-white"
+        *ngIf="AvailableChallenges.length > 0"
+      >
+        Desafios
+      </h2>
+      <ng-container *ngFor="let challenge of AvailableChallenges">
+        <app-challenge-group
+          [challengeTitle]="challenge.title"
+          [challengeDescription]="challenge.description"
+          [challengeStage]="challenge.stage"
+          (challengeOpened)="onChallengeOpened(challenge.title)"
+        >
+        </app-challenge-group>
+      </ng-container>
+    </div>
   </div>
+  <app-challenge-modal
+    *ngIf="showModal"
+    [currentChallengeTitle]="currentChallengeTitle"
+    (modalClosed)="onModalClosed()"
+  ></app-challenge-modal>
 </div>

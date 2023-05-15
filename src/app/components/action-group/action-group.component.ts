@@ -30,6 +30,6 @@ export class ActionGroupComponent {
   }
 
   public get Progress(): number {
-    return 288 * (this.timeElapsed / this.time);
+    return 100 * (this.timeElapsed / this.time);
   }
 }

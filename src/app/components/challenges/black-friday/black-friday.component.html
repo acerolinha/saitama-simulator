@@ -1,0 +1,45 @@
+<div>
+  <div *ngIf="State === 0">
+    <h4 class="font-semibold">Se prepare!</h4>
+    <p>
+      Compre o máximo de produtos em promoção que conseguir e não seja esmagado
+      pela multidão!
+    </p>
+    <p class="font-bold">A black friday irá começar em: 00:{{ Countdown }}</p>
+  </div>
+  <div *ngIf="State === 1">
+    <p class="font-bold">A black friday acaba em 00:{{ Countdown }}</p>
+    <div class="h-2/3 w-full overflow-hidden lg:h-[600px]" #minigameContainer>
+      <button
+        (click)="buyItem()"
+        [style]="
+          'margin-left:' +
+          itemX +
+          'px' +
+          ';margin-top:' +
+          itemY +
+          'px;transform:rotate(' +
+          itemRotation +
+          'deg);'
+        "
+      >
+        <img
+          class="max-h-[130px] max-w-[130px] lg:max-h-[200px] lg:max-w-[200px]"
+          [src]="'../../../../assets/img/black-friday/item' + itemId + '.png'"
+          alt=""
+          srcset=""
+        />
+      </button>
+    </div>
+  </div>
+  <div *ngIf="State === 2">
+    <p *ngIf="won; else loose">
+      Parabéns, você conseguiu comprar {{ boughtItems }} produtos em promoção na
+      Black Friday, agora vá para o próximo desafio!
+    </p>
+    <ng-template #loose>
+      Você só conseguiu comprar {{ boughtItems }} produtos na Black Friday, tá
+      precisando treinar mais! Tente de novo na próxima Black Friday!
+    </ng-template>
+  </div>
+</div>
